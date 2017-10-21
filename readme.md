@@ -2,8 +2,8 @@ TensorFlow Chessbot - [/u/ChessFenBot](https://www.reddit.com/user/ChessFenBot) 
 ---
 
 ## Running on Windows
-This requires [Python 3.5.2](https://www.python.org/downloads/release/python-352) (blame tensorflow :P)
-Install Python 3.5.2, then install these packages:
+~~This requires [Python 3.5.2](https://www.python.org/downloads/release/python-352) (blame tensorflow :P)
+Install Python 3.5.2~~, (Python 3.6 is now supported) then install these packages:
 * tensorflow (or tensorflow-gpu, if you have an ok Nvidia GPU)
 * BeautifulSoup4
 * Pillow
