@@ -6,8 +6,8 @@ import os
 
 # Imports for visualization
 import PIL.Image
-from cStringIO import StringIO
-import urllib2
+from io import StringIO
+from urllib.request import urlopen, Request
 from IPython.display import clear_output, Image, display
 import scipy.ndimage as nd
 import scipy.signal
@@ -18,8 +18,8 @@ from bs4 import BeautifulSoup
 
 def loadImageFromURL(img_url):
   """Load PIL image from URL, keep as color"""
-  req = urllib2.Request(img_url, headers={'User-Agent' : "TensorFlow Chessbot"})
-  con = urllib2.urlopen(req)
+  req = Request(img_url, headers={'User-Agent' : "TensorFlow Chessbot"})
+  con = urlopen(req)
   return PIL.Image.open(StringIO(con.read()))
 
 def loadImageFromPath(img_path):
@@ -39,7 +39,7 @@ def loadImageURL(image_url):
   # Otherwise try loading image from url directly
   try:
     return loadImageFromURL(image_url)
-  except IOError, e:
+  except IOError:
     pass
   
   return None
