@@ -136,13 +136,13 @@ class ChessboardPredictor(object):
     guess_prob, guessed = self.sess.run([self.y_conv, tf.argmax(self.y_conv,1)], feed_dict={self.x: validation_set, self.keep_prob: 1.0})
     
     # Prediction bounds
-    a = np.array(map(lambda x: x[0][x[1]], zip(guess_prob, guessed)))
+    a = np.array(list(map(lambda x: x[0][x[1]], zip(guess_prob, guessed))))
     tile_certainties = a.reshape([8,8])[::-1,:]
 
     # Convert guess into FEN string
     # guessed is tiles A1-H8 rank-order, so to make a FEN we just need to flip the files from 1-8 to 8-1
     labelIndex2Name = lambda label_index: ' KQRBNPkqrbnp'[label_index]
-    pieceNames = map(lambda k: '1' if k == 0 else labelIndex2Name(k), guessed) # exchange ' ' for '1' for FEN
+    pieceNames = list(map(lambda k: '1' if k == 0 else labelIndex2Name(k), guessed)) # exchange ' ' for '1' for FEN
     fen = '/'.join([''.join(pieceNames[i*8:(i+1)*8]) for i in reversed(range(8))])
     return fen, tile_certainties
 
@@ -240,7 +240,7 @@ if __name__ == '__main__':
   np.set_printoptions(suppress=True, precision=3)
   import argparse
   parser = argparse.ArgumentParser(description='Predict a chessboard FEN from supplied local image link or URL')
-  parser.add_argument('--url', default='http://imgur.com/u4zF5Hj.png', help='URL of image (ex. http://imgur.com/u4zF5Hj.png)')
+  parser.add_argument('--url', default='', help='URL of image (ex. http://imgur.com/u4zF5Hj.png)')
   parser.add_argument('--filepath', help='filepath to image (ex. u4zF5Hj.png)')
   args = parser.parse_args()
   main(args)
