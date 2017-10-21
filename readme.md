@@ -1,6 +1,24 @@
 TensorFlow Chessbot - [/u/ChessFenBot](https://www.reddit.com/user/ChessFenBot) [◕ _ ◕]<sup>\* *I make FENs*</sup>
 ---
 
+## Running on Windows
+This required [Python 3.5.2](https://www.python.org/downloads/release/python-352) (blame tensorflow :P)
+Install Python 3.5.2, then install these packages:
+* tensorflow (or tensorflow-gpu, if you have an ok Nvidia GPU)
+* BeautifulSoup4
+* Pillow
+* numpy
+* scipy
+* matplotlib,
+* Ipython
+* ipython-notebook 
+* pandas
+* sympy
+* nose
+After this, run tensorflow_chessbot.py WITH Python 3.5.2, and voila! Just remember the commandline arguments
+
+PS: I applied some fixes so that this works on Python 3.
+
 **TL;DR**: 
 > Turn http://i.imgur.com/HnWYt8A.png → [1nkr4/1p3q1p/pP4pn/P1r5/3N1p2/2b2B1P/5PPB/2RQ1RK1](https://lichess.org/analysis/1nkr4/1p3q1p/pP4pn/P1r5/3N1p2/2b2B1P/5PPB/2RQ1RK1_w)
 
