@@ -2,8 +2,9 @@ import numpy as np
 
 # Imports for visualization
 import PIL.Image
-from cStringIO import StringIO
-import urllib2
+from io import StringIO
+from urllib.request import urlopen, Request
+import urllib.parse
 
 # Imports for pulling metadata from imgur url
 import requests
@@ -26,11 +27,11 @@ def loadImageFromURL(url):
 
   # Try loading image from url directly
   try:
-    req = urllib2.Request(url, headers={'User-Agent' : "TensorFlow Chessbot"})
-    con = urllib2.urlopen(req)
+    req = Request(url, headers={'User-Agent' : "TensorFlow Chessbot"})
+    con = urlopen(req)
     # Return PIL image and url used
     return PIL.Image.open(StringIO(con.read())), url
-  except IOError, e:
+  except IOError:
     # Return None on failure to load image from url
     return None, url
 
@@ -80,7 +81,7 @@ def resizeAsNeeded(img, max_size=(2000,2000)):
 
 def getVisualizeLink(corners, url):
   """Return online link to visualize found corners for url"""
-  encoded_url = urllib2.quote(url, safe='')
+  encoded_url = urllib.parse.quote(url, safe='')
   
   return ("http://tetration.xyz/tensorflow_chessbot/overlay_chessboard.html?%d,%d,%d,%d,%s" % 
     (corners[0], corners[1], corners[2], corners[3], encoded_url))
