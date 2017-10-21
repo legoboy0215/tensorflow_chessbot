@@ -15,6 +15,7 @@ Install Python 3.5.2, then install these packages:
 * pandas
 * sympy
 * nose
+* lxml
 After this, run tensorflow_chessbot.py WITH Python 3.5.2, and voila! Just remember the commandline arguments
 
 PS: I applied some fixes so that this works on Python 3. Don't forget to clone the chessfenbot branch!
